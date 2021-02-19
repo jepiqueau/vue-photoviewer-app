@@ -1,0 +1,7 @@
+{
+  "name": "vue-photoviewer-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
