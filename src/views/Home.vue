@@ -14,8 +14,14 @@
       </ion-header>
     
       <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+          <Suspense>
+            <template #default>
+              <PhotoViewer />
+            </template>
+            <template #feedback>
+              <div> Loading ... </div>
+            </template>
+          </Suspense>
       </div>
     </ion-content>
   </ion-page>
@@ -24,6 +30,7 @@
 <script lang="ts">
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
+import PhotoViewer from '@/components/PhotoViewer.vue';
 
 export default defineComponent({
   name: 'Home',
@@ -32,20 +39,20 @@ export default defineComponent({
     IonHeader,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    PhotoViewer,
   }
 });
 </script>
 
 <style scoped>
 #container {
-  text-align: center;
   
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
 }
 
 #container strong {

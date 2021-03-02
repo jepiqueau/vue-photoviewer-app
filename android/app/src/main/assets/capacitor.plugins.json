@@ -1,0 +1,10 @@
+[
+	{
+		"pkg": "@capacitor-community/photoviewer",
+		"classpath": "com.getcapacitor.community.media.photoviewer.PhotoViewerPlugin"
+	},
+	{
+		"pkg": "@capacitor/toast",
+		"classpath": "com.capacitorjs.plugins.toast.ToastPlugin"
+	}
+]
