@@ -1,12 +1,10 @@
 {
   "name": "vue-photoviewer-app",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "Ionic/Vue Photoviewer Application",
-
   "author": "Jean Pierre Quéau",
   "license": "MIT",
-
   "scripts": {
     "update": "npm install --save-dev @capacitor-community/photoviewer@latest",
     "serve": "vue-cli-service serve",
@@ -16,7 +14,6 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@capacitor-community/photoviewer": "^0.0.1-alpha.1",
     "@capacitor/android": "^3.0.0-beta.3",
     "@capacitor/core": "^3.0.0-beta.3",
     "@capacitor/ios": "^3.0.0-beta.3",
@@ -28,6 +25,7 @@
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
+    "@capacitor-community/photoviewer": "^0.0.1-alpha.2",
     "@capacitor/cli": "^3.0.0-beta.3",
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
@@ -55,5 +53,4 @@
   "bugs": {
     "url": "https://github.com/jepiqueau/vue-photoviewer-app.git/issues"
   }
-
 }
