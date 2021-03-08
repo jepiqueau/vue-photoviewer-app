@@ -1,6 +1,6 @@
 {
   "name": "vue-photoviewer-app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "description": "Ionic/Vue Photoviewer Application",
   "author": "Jean Pierre Quéau",
@@ -14,9 +14,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@capacitor/android": "^3.0.0-beta.3",
-    "@capacitor/core": "^3.0.0-beta.3",
-    "@capacitor/ios": "^3.0.0-beta.3",
+    "@capacitor/android": "^3.0.0-beta.6",
+    "@capacitor/core": "^3.0.0-beta.6",
+    "@capacitor/ios": "^3.0.0-beta.6",
     "@capacitor/toast": "^0.4.3",
     "@ionic/vue": "^5.4.0",
     "@ionic/vue-router": "^5.4.0",
@@ -25,8 +25,8 @@
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
-    "@capacitor-community/photoviewer": "^0.0.1-alpha.2",
-    "@capacitor/cli": "^3.0.0-beta.3",
+    "@capacitor-community/photoviewer": "^0.0.1-beta.1",
+    "@capacitor/cli": "^3.0.0-beta.6",
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
