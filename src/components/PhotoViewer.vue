@@ -6,14 +6,16 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue';
-import { PhotoViewer, Image, ViewerOptions, 
-         capEchoOptions, capEchoResult,
+import { PhotoViewer, Image, ViewerOptions, capEchoResult,
          capShowOptions, capShowResult} from '@capacitor-community/photoviewer';
+import { Capacitor } from '@capacitor/core';
 import { Toast } from '@capacitor/toast';
 import { base64List } from '@/utils/base64Images';
 export default defineComponent({
     name: 'PhotoViewer',
     async setup() {
+        const platform = Capacitor.getPlatform();
+
         const echo = async (value: string): Promise<capEchoResult> => {
             const val: any = {};
             val.value = value;
@@ -45,16 +47,20 @@ export default defineComponent({
             if(options) opt.options = options
             try {
                 const ret = await PhotoViewer.show(opt);
+                console.log(`in const show ret: ${JSON.stringify(ret)}`)
                 if(ret.result) {
+                    console.log(`in const show ret true: ${JSON.stringify(ret)}`)
                     return Promise.resolve(ret);
                 } else {
-                    return Promise.reject(ret);
+                    console.log(`in const show ret false: ${JSON.stringify(ret)}`)
+                    return Promise.reject(ret.message);
                 }
             } catch (err) {
                 const ret: capShowResult = {} as capShowResult;
                 ret.result = false;
                 ret.message = err.message;
-                return Promise.reject(ret);
+                console.log(`in const show catch err: ${JSON.stringify(ret)}`)
+                return Promise.reject(err.message);
             }
 
         }
@@ -81,8 +87,9 @@ export default defineComponent({
                 // options.share = false;
                 // options.transformer = "depth";
                 // options.spancount = 2
-                options.maxzoomscale = 3
-                options.compressionquality = 0.6
+                options.maxzoomscale = 3;
+                options.compressionquality = 0.6;
+                options.movieoptions = {mode: "portrait", imagetime: 3};
 
                 // **************************************
                 // here you defined url or Base64 images
@@ -92,6 +99,7 @@ export default defineComponent({
 
                 // http images call
                 ret = await show(imageList, options);
+                console.log(`after show ret: ${JSON.stringify(ret)}`)
 
                 // base64 images call
                 //ret = await show(base64List, options);
@@ -100,8 +108,16 @@ export default defineComponent({
                     await showToast(JSON.stringify(ret));
                 }
 
+                if(ret.result && Object.keys(ret).includes("message")) {
+                    await showToast(JSON.stringify(ret));
+                }
+
             } catch (err) {
-                await showToast(err.message);
+                console.log(`in catch before toast err: ${err}`)
+                await showToast(err);
+                if(platform === "web" || platform === "electron") {
+                    window.location.reload();
+                }
             }
         });
         return

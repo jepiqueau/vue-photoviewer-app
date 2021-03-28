@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
+    <ion-header class="header" :translucent="true">
       <ion-toolbar>
         <ion-title>Blank</ion-title>
       </ion-toolbar>
@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted } from 'vue';
 import PhotoViewer from '@/components/PhotoViewer.vue';
 
 export default defineComponent({
@@ -41,11 +41,25 @@ export default defineComponent({
     IonTitle,
     IonToolbar,
     PhotoViewer,
+  },
+  setup() {
+    onMounted( () => {
+      const header = document.querySelector('.header');
+      header?.classList.add('hidden');
+    });
+    return
   }
 });
 </script>
 
 <style scoped>
+
+ion-header {
+  visibility: visible;
+}
+.hidden {
+  visibility: hidden;
+}
 #container {
   
   position: absolute;
