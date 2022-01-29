@@ -3,17 +3,11 @@ module.exports = {
   env: {
     node: true
   },
-
-  extends: [
+  'extends': [
     'plugin:vue/vue3-essential',
     'eslint:recommended',
-    '@vue/typescript/recommended',
-    'plugin:import/typescript'
+    '@vue/typescript/recommended'
   ],
-  settings: {
-    'import/resolver': '@capacitor-community/photoviewer'
-  },
-
   parserOptions: {
     ecmaVersion: 2020
   },
